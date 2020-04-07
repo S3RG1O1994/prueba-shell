@@ -6,8 +6,10 @@ int main(void)
 	int bytes_read;
 	size_t size = 10;
 	char *string;
+	char **argv;
 
-	printf("$ ");
+	_putchar('$');
+	_putchar(' ');
 
 	/*Asignación de tamaño a la bariable string*/
 	string = malloc(sizeof(char) * size);
@@ -20,8 +22,11 @@ int main(void)
 		printf("erro\n");
 	else
 	{
-		printf("%s\n", string);
-		//printf("El tamaño en bytes es %i\n, bytes_read");
+		argv = commands(string);
+		if (execve(argv[0], argv, NULL) == -1)
+		{
+			perror("Error:");
+		}
 	}
 	return (0);
 }

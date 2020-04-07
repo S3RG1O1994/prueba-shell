@@ -1,13 +1,15 @@
 #include "shell.h"
 
-int main(void)
+void first_func(void)
 {
 	/*Declaración de Variables necesarias para el uso del getline*/
 	int bytes_read;
-	size_t size = 10;
+	size_t size = 0;
 	char *string;
 	char **argv;
-	printf("$ ");
+
+	_putchar('$');
+	_putchar(' ');
 
 	/*Asignación de tamaño a la bariable string*/
 	string = malloc(sizeof(char) * size);
@@ -26,5 +28,4 @@ int main(void)
 			perror("Error:");
 		}
 	}
-	return (0);
 }

@@ -1,5 +1,31 @@
 #include "shell.h"
 
+char **commands(char *str)
+{
+	char *res;
+	char **array;
+	int count = 0;
+	int space = 0;
+
+	while (str[count])
+	{
+		if (str[count] == ' ')
+			space++;
+		count++;
+	}
+	count -= 1;
+	space += 2;
+
+	res = strtok(str, " ");
+
+	while (res)
+	{
+		array = add_arr(res, space, count);
+		res = strtok(NULL, " ");
+	}
+	return (array);
+}
+
 char **add_arr(char * str, int space, int letters)
 {
 	char **arr;
@@ -22,5 +48,7 @@ char **add_arr(char * str, int space, int letters)
 		arr[a][b] = '\0';
 		str = strtok(NULL, " ");
 	}
+	arr[a - 1][b - 1] = '\0';
+	arr[a] = NULL;
 	return (arr);
 }
