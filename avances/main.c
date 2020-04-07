@@ -7,7 +7,8 @@ int main(void)
 	size_t size = 10;
 	char *string;
 	char **argv;
-	printf("$ ");
+	_putchar('$');
+	_putchar(' ');
 
 	/*Asignación de tamaño a la bariable string*/
 	string = malloc(sizeof(char) * size);
