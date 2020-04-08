@@ -9,6 +9,7 @@
 #include <sys/stat.h>
 #include <string.h>
 
-char **add_arr(char *str);
+char **add_arr(char *str, int space, int letters);
+char **commands(char *str);
 
 #endif

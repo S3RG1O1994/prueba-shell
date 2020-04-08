@@ -8,12 +8,21 @@ int main()
 	int count = 0;
 	int space = 0;
 	int i;
-	
+
+	while (str[count])
+	{
+		if (str[count] == ' ')
+			space++;
+		count++;
+	}
+	count -= 1;
+	space += 1;
+
 	res = strtok(str, " ");
 
 	while (res)
 	{
-		array = add_arr(res);
+		array = add_arr(res, space, count);
 		res = strtok(NULL, " ");
 	}
 
