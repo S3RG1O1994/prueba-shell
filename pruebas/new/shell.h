@@ -13,5 +13,6 @@ char **add_arr(char *pre_arr, int *metadatos, int words);
 char **commands(char *str);
 int _putchar(char c);
 void first_func(void);
+void free_all(char **arr);
 
 #endif
