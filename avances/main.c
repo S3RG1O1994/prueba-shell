@@ -2,29 +2,24 @@
 
 int main(void)
 {
-	/*Declaración de Variables necesarias para el uso del getline*/
-	int bytes_read;
-	size_t size = 10;
-	char *string;
-	char **argv;
-	_putchar('$');
-	_putchar(' ');
+	pid_t pid;
 
-	/*Asignación de tamaño a la bariable string*/
-	string = malloc(sizeof(char) * size);
-
-	/*Uso de la función getline pasando los paramentros
-	  (dir del string, dir del tamaño, salida estandar)*/
-	bytes_read = getline(&string, &size, stdin);
-
-	if(bytes_read == -1)
-		printf("erro\n");
-	else
+	while (1)
 	{
-		argv = commands(string);
-		if (execve(argv[0], argv, NULL) == -1)
+
+		pid = fork();
+		if ( pid > 0)
+		{
+			wait(&pid);
+		}
+		else if (pid == 0)
+		{
+			first_func();
+		}
+		else
 		{
 			perror("Error:");
+			return (1);
 		}
 	}
 	return (0);
