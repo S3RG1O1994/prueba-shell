@@ -9,9 +9,13 @@
 #include <sys/stat.h>
 #include <string.h>
 
-char **add_arr(char *str, int space, int letters);
+<<<<<<< HEAD:shell.h
+char **add_arr(char *str);
+=======
+char **add_arr(char *pre_arr, int *metadatos, int words);
 char **commands(char *str);
 int _putchar(char c);
 void first_func(void);
+>>>>>>> 57dc1681ba9e39e3647f3a78c3e16fd93dfc8b86:pruebas/new/shell.h
 
 #endif
