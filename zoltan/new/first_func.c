@@ -31,28 +31,17 @@ void first_func(void)
 		argv = add_arr(string);
 		pid = fork();
 		if (pid > 0)
-		{
 			wait(&pid);
-			free(string);
-			free(argv[0]);
-			free(argv);
-		}
 		else if (pid == 0)
 		{
 			if (execve(argv[0], argv, NULL) == -1)
-			{
 				perror("Error en execve");
-				free(string);
-				free(argv[0]);
-				free(argv);
-			}
 		}
 		else
-		{
 			perror("Error else");
-			free(string);
-			free(argv[0]);
-			free(argv);
-		}
+
 	}
+	free(string);
+	free(argv[0]);
+	free(argv);
 }

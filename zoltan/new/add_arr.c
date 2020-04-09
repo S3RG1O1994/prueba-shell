@@ -26,5 +26,6 @@ char **add_arr(char *str)
 		copy = strtok(NULL, " ");
 		count++;
 	}
+	free(copy);
 	return (arr);
 }
