@@ -11,5 +11,6 @@
 
 char **add_arr(char *str, int space, int letters);
 char **commands(char *str);
-
+char *_getenv(char *words);
+char *contac(char **Dir, char **parameters);
 #endif
