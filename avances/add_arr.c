@@ -1,54 +1,35 @@
 #include "shell.h"
 
-char **commands(char *str)
-{
-	char *res;
-	char **array;
-	int count = 0;
-	int space = 0;
-
-	while (str[count])
-	{
-		if (str[count] == ' ')
-			space++;
-		count++;
-	}
-	count -= 1;
-	space += 2;
-
-	res = strtok(str, " ");
-
-	while (res)
-	{
-		array = add_arr(res, space, count);
-		res = strtok(NULL, " ");
-	}
-	return (array);
-}
-
-char **add_arr(char * str, int space, int letters)
+char **add_arr(char *pre_arr, int *metadatos, int words)
 {
 	char **arr;
-	int a;
-	int b;
-	int count;
+	int count, count_2 = 0, count_3, count_4, count_5;
 
-	arr = (char **)malloc(space * sizeof(char *));
+	arr = malloc(sizeof(char *) * words);
+	if (arr == NULL)
+		return (NULL);
 
-	for (count = 0; count < space; count++) {
-		arr[count] = (char *)malloc(letters * sizeof(char));
-	}
-
-	for (a = 0; str; a++)
+	for (count = 0; count < words; count++)
 	{
-		for (b = 0; str[b] != '\0'; b++)
+		arr[count] = malloc(sizeof(char) * metadatos[count_2] + 1);
+		if (arr[count] == NULL)
 		{
-			arr[a][b] = str[b];
+			for (count_3 = 0; count_3 < count; count_3++)
+				free(arr[count_3]);
+			free(arr);
 		}
-		arr[a][b] = '\0';
-		str = strtok(NULL, " ");
+		count_2++;
 	}
-	arr[a - 1][b - 1] = '\0';
-	arr[a] = NULL;
+
+	for (count_4 = 0; pre_arr; count_4++)
+	{
+		for (count_5 = 0; pre_arr[count_5] != '\0'; count_5++)
+			arr[count_4][count_5] = pre_arr[count_5];
+
+		arr[count_4][count_5] = '\0';
+		pre_arr = strtok(NULL, " ");
+	}
+	arr[count_4] = NULL;
+
 	return (arr);
 }

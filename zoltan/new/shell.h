@@ -10,5 +10,6 @@
 #include <string.h>
 
 void first_func(void);
+void free_all(char **arr);
 
 #endif
