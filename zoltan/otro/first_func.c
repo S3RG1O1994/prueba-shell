@@ -19,9 +19,11 @@ void first_func(void)
 	/*Uso de la función getline pasando los paramentros
 	  (dir del string, dir del tamaño, salida estandar)*/
 	bytes_read = getline(&string, &size, stdin);
-
 	if(bytes_read == -1)
 		printf("erro\n");
+
+	if (string[0] == '\n')
+		return;
 	else
 	{
 		argv = commands(string);

@@ -1,35 +1,30 @@
 #include "shell.h"
 
-char **add_arr(char *pre_arr, int *metadatos, int words)
+char **add_arr(char *str)
 {
-	char **arr;
-	int count, count_2 = 0, count_3, count_4, count_5;
+	int count = 0, words = 2;
+	char *copy = NULL, **arr = NULL;
+
+	copy = strdup(str);
+	while (copy[count])
+	{
+		if (copy[count] == ' ')
+			words++;
+		count++;
+	}
+	copy[count - 1] = '\0';
 
 	arr = malloc(sizeof(char *) * words);
-	if (arr == NULL)
+	if (!arr)
 		return (NULL);
 
-	for (count = 0; count < words; count++)
+	count = 0;
+	copy = strtok(copy, " ");
+	while (count < words)
 	{
-		arr[count] = malloc(sizeof(char) * metadatos[count_2] + 1);
-		if (arr[count] == NULL)
-		{
-			for (count_3 = 0; count_3 < count; count_3++)
-				free(arr[count_3]);
-			free(arr);
-		}
-		count_2++;
+		arr[count] = copy;
+		copy = strtok(NULL, " ");
+		count++;
 	}
-
-	for (count_4 = 0; pre_arr; count_4++)
-	{
-		for (count_5 = 0; pre_arr[count_5] != '\0'; count_5++)
-			arr[count_4][count_5] = pre_arr[count_5];
-
-		arr[count_4][count_5] = '\0';
-		pre_arr = strtok(NULL, " ");
-	}
-	arr[count_4] = NULL;
-
 	return (arr);
 }
