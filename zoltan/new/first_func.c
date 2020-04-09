@@ -18,10 +18,14 @@ void first_func(void)
 	if(bytes_read == -1)
 	{
 		printf("error bytes_read == -1\n");
+		free(string);
 		return;
 	}
 	if (string[0] == '\n')
+	{
+		free(string);
 		return;
+	}
 	else
 	{
 		argv = add_arr(string);
@@ -36,9 +40,19 @@ void first_func(void)
 		else if (pid == 0)
 		{
 			if (execve(argv[0], argv, NULL) == -1)
-				perror("Error en execve:");
+			{
+				perror("Error en execve");
+				free(string);
+				free(argv[0]);
+				free(argv);
+			}
 		}
 		else
-			perror("Error else:");
+		{
+			perror("Error else");
+			free(string);
+			free(argv[0]);
+			free(argv);
+		}
 	}
 }
