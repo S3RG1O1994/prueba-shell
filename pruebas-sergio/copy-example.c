@@ -13,6 +13,7 @@ int doSomething(void)
     srand(getpid());
     ret = (rand() % 256);
     printf("HIJO: PID = %d, valor aleatorio calculado %d\n", getpid(), ret);
+    
 }
 int main(void)
 {
