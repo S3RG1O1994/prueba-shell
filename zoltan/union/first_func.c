@@ -26,23 +26,18 @@ void first_func(void)
 		free(string);
 		return;
 	}
-	else
+	arr = create_arr(string);
+	pid = fork();
+	if (pid > 0)
+		wait(&pid);
+	else if (pid == 0)
 	{
-		arr = create_arr(string);
-		pid = fork();
-		if (pid > 0)
-			wait(&pid);
-		else if (pid == 0)
-		{
-			if (execve(arr[0], arr, NULL) == -1)
-				perror("Error en execve");
-		}
-		else
-			perror("Error else");
-
+		if (execve(arr[0], arr, NULL) == -1)
+			perror("Error en execve");
 	}
+	else
+		perror("Error else");
+
 	free(string);
-	free(arr[0]);
-	free(arr[1]);
-	free(arr);
+	free_all(arr);
 }

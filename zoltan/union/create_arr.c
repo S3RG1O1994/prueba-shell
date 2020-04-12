@@ -7,7 +7,7 @@ char **create_arr(char *str_g)
 	char *copy_path = NULL;
 	char *path = NULL;
 	char **arr = NULL;
-	int rtrn_stat;
+	int rtrn_stat, count = 0;
 
 	copy_path = strdup(real_path);
 	path = copy_path;
@@ -19,17 +19,17 @@ char **create_arr(char *str_g)
 		if (rtrn_stat == 0)
 		{
 			arr = add_arr(str_g, vector);
-			//free(vector);
-			free(copy_path);
-			//free(path);
+			while (arr[count])
+			{
+				count++;
+			}
+			arr[count + 1] = copy_path;
 			return (arr);
 		}
 		free(vector);
 		path = strtok(NULL, ":");
 	}
-
-	printf("No se encontro el comando: %s\n", str_g);
-
+	printf("No found: %s\n", str_g);
 	free(copy_path);
 	return NULL;
 }
