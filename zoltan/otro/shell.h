@@ -9,10 +9,10 @@
 #include <sys/stat.h>
 #include <string.h>
 
-char **add_arr(char *pre_arr, int *metadatos, int words);
-char **commands(char *str);
+char **add_arr(char *str, char *command);
 int _putchar(char c);
 void first_func(void);
-void free_all(char **arr);
+char *concatenate(char *str_g, char *path);
+int stat_func(char *command);
 
 #endif
