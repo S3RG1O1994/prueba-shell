@@ -6,16 +6,11 @@ int main(void)
 
 	while (1)
 	{
-
 		pid = fork();
 		if ( pid > 0)
-		{
 			wait(&pid);
-		}
 		else if (pid == 0)
-		{
 			first_func();
-		}
 		else
 		{
 			perror("Error:");

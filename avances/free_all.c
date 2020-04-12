@@ -5,21 +5,13 @@ void free_all(char **arr)
 	int count = 0;
 
 	while (arr[count])
-	{
 		count++;
-	}
-	count++;
-	if (arr[count])
-		free(arr[count]);
-
 	count = 0;
-
 	while (count < 2 && arr[count])
 	{
 		free(arr[count]);
 		count++;
 	}
-
+	free(arr[count + 1]);
 	free(arr);
-
 }
