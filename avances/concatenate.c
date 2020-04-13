@@ -1,5 +1,12 @@
 #include "shell.h"
 
+/**
+ * concatenate - Unify the command with the possible path.
+ * @str_g: Contains the string given by the getline function.
+ * @path: Contains the PATH.
+ *
+ * Return: Returns the PATH concatenated with the command.
+ */
 char *concatenate(char *str_g, char *path)
 {
 	int count = 0, count_2 = 0, count_3 = 0, size = 0;
@@ -12,7 +19,6 @@ char *concatenate(char *str_g, char *path)
 		count_2++;
 
 	size = count_2 + count + 2;
-
 	arr = malloc(sizeof(char) * size);
 	if (!arr)
 		return (NULL);
@@ -22,8 +28,7 @@ char *concatenate(char *str_g, char *path)
 	arr[count] = '/';
 
 	count++;
-
-	while ( str_g[count_3] != '\n' && str_g[count_3] != ' ')
+	while (str_g[count_3] != '\n' && str_g[count_3] != ' ')
 	{
 		arr[count] = str_g[count_3];
 		count++;

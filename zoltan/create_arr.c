@@ -1,13 +1,16 @@
 #include "shell.h"
 
+/**
+ * create_arr - Assign the command path to the array.
+ * @str_g: - String obtained from the getline function.
+ *
+ * Return: Returns an array to run.
+ */
 char **create_arr(char *str_g)
 {
-	char *real_path = _getenv("PATH");/*"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"*/;
-	char *vector = NULL;
-	char *copy_path = NULL;
-	char *path = NULL;
-	char **arr = NULL;
 	int rtrn_stat, count = 0;
+	char *real_path = _getenv("PATH"), *vector = NULL;
+	char *path = NULL, **arr = NULL, *copy_path = NULL;
 
 	copy_path = strdup(real_path);
 	path = copy_path;
@@ -20,9 +23,7 @@ char **create_arr(char *str_g)
 		{
 			arr = add_arr(str_g, vector);
 			while (arr[count])
-			{
 				count++;
-			}
 			arr[count + 1] = copy_path;
 			return (arr);
 		}

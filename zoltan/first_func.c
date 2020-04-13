@@ -1,21 +1,22 @@
 #include "shell.h"
 
+/**
+ * first_func - principal function
+ */
 void first_func(void)
 {
 	int bytes_read;
 	size_t size = 0;
-	char *string = NULL, **argv = NULL;
+	char *string = NULL, **arr = NULL;
 	pid_t pid;
 
 	_putchar('$');
 	_putchar(' ');
-
 	string = malloc(sizeof(char) * size);
 	if (string == NULL)
 		return;
 	bytes_read = getline(&string, &size, stdin);
-
-	if(bytes_read == -1)
+	if (bytes_read == -1)
 	{
 		printf("error bytes_read == -1\n");
 		free(string);
@@ -26,22 +27,22 @@ void first_func(void)
 		free(string);
 		return;
 	}
-	else
+	arr = create_arr(string);
+	if (!arr)
 	{
-		argv = add_arr(string);
-		pid = fork();
-		if (pid > 0)
-			wait(&pid);
-		else if (pid == 0)
-		{
-			if (execve(argv[0], argv, NULL) == -1)
-				perror("Error en execve");
-		}
-		else
-			perror("Error else");
-
+		free(string);
+		return;
 	}
+	pid = fork();
+	if (pid > 0)
+		wait(&pid);
+	else if (pid == 0)
+	{
+		if (execve(arr[0], arr, NULL) == -1)
+			perror("Error en execve");
+	}
+	else
+		perror("Error else");
 	free(string);
-	free(argv[0]);
-	free(argv);
+	free_all(arr);
 }

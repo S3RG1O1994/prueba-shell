@@ -1,5 +1,8 @@
 #include "shell.h"
 
+/**
+ * first_func - principal function
+ */
 void first_func(void)
 {
 	int bytes_read;
@@ -9,13 +12,11 @@ void first_func(void)
 
 	_putchar('$');
 	_putchar(' ');
-
 	string = malloc(sizeof(char) * size);
 	if (string == NULL)
 		return;
 	bytes_read = getline(&string, &size, stdin);
-
-	if(bytes_read == -1)
+	if (bytes_read == -1)
 	{
 		printf("error bytes_read == -1\n");
 		free(string);
@@ -42,7 +43,6 @@ void first_func(void)
 	}
 	else
 		perror("Error else");
-
 	free(string);
 	free_all(arr);
 }
