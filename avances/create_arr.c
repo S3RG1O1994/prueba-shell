@@ -2,7 +2,7 @@
 
 char **create_arr(char *str_g)
 {
-	char *real_path = "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin";
+	char *real_path = _getenv("PATH");/*"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"*/;
 	char *vector = NULL;
 	char *copy_path = NULL;
 	char *path = NULL;
