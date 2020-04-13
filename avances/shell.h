@@ -16,5 +16,6 @@ char *concatenate(char *str_g, char *path);
 int stat_func(char *command);
 char **create_arr(char *str_g);
 void free_all(char **arr);
+char *_getenv(char *words);
 
 #endif
