@@ -12,7 +12,7 @@ char **create_arr(char *str_g)
 	char *real_path = _getenv("PATH"), *vector = NULL;
 	char *path = NULL, **arr = NULL, *copy_path = NULL;
 
-	copy_path = strdup(real_path);
+	copy_path = _strdup(real_path);
 	path = copy_path;
 	path = strtok(path, ":");
 	while (path)

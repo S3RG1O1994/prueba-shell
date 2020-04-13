@@ -26,7 +26,7 @@ char **add_arr(char *str, char *command)
 	count = 0;
 	while (str[count_2] != ' ' && str[count_2] != '\n')
 		count_2++;
-	copy = strdup(&str[count_2 + 1]);
+	copy = _strdup(&str[count_2 + 1]);
 	while (copy[count])
 	{
 		if (copy[count] == ' ')
