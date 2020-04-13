@@ -29,7 +29,7 @@ char **create_arr(char *str_g)
 		free(vector);
 		path = strtok(NULL, ":");
 	}
-	printf("No found: %s\n", str_g);
+	printf("No found: %s", str_g);
 	free(copy_path);
-	return NULL;
+	return (NULL);
 }

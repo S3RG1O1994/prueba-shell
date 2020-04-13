@@ -27,6 +27,11 @@ void first_func(void)
 		return;
 	}
 	arr = create_arr(string);
+	if (!arr)
+	{
+		free(string);
+		return;
+	}
 	pid = fork();
 	if (pid > 0)
 		wait(&pid);
