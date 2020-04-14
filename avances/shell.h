@@ -19,5 +19,6 @@ void free_all(char **arr);
 char *_getenv(char *words);
 char **simple_arr(char *command, int words);
 char *_strdup(char *str);
+void print_env(char *string, char env[]);
 
 #endif

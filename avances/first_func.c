@@ -9,7 +9,8 @@ void first_func(void)
 	size_t size = 0;
 	char *string = NULL, **arr = NULL;
 	pid_t pid;
-
+	char env[] = "env";
+	
 	_putchar('$');
 	_putchar(' ');
 	string = malloc(sizeof(char) * size);
@@ -24,6 +25,12 @@ void first_func(void)
 	}
 	if (string[0] == '\n')
 	{
+		free(string);
+		return;
+	}
+	if ((string[0] == env[0]) && (string[1] == env[1]))
+	{
+		print_env(string, env);
 		free(string);
 		return;
 	}
