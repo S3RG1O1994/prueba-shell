@@ -1,10 +1,11 @@
 #include "shell.h"
-/*
-*
-*
-*
-*/
 
+/**
+ * check_exit - Call the function exit.
+ * @string: Contains the commands.
+ *
+ * Return: Allways 1.
+ */
 int check_exit(char *string)
 {
 	unsigned int cnt = 0, cnt_2 = 0;
@@ -17,7 +18,7 @@ int check_exit(char *string)
 		cnt++;
 	}
 
-	if(cnt == cnt_2)
+	if (cnt == cnt_2)
 	{
 		free(string);
 		exit(0);

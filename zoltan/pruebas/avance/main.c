@@ -12,7 +12,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 	while (1)
 	{
 		counter++;
-		write(STDOUT_FILENO,"$ ", 2);
+		write(STDOUT_FILENO, "$ ", 2);
 		bytes_read = getline(&args, &size, stdin);
 		if (bytes_read == -1)
 		{
@@ -48,9 +48,7 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 				perror("Error: pid < 0");
 		}
 		if (arr)
-		{
 			free_all(arr);
-		}
 	}
 	free(args);
 	return (0);

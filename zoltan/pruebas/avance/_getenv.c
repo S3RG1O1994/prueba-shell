@@ -3,6 +3,7 @@
 /**
  * _getenv - Get environment.
  * @words: Variable char.
+ * @environ: Contains the environment.
  *
  * Return: Path.
  */

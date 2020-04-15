@@ -1,9 +1,11 @@
 #include <stdio.h>
 
 /**
- * main - prints the environment
+ * print_env - Prints the environment.
+ * @string: Contains the commands.
+ * @environ: Contains the environment.
  *
- * Return: Always 0.
+ * Return: Always 0 or 1.
  */
 int print_env(char *string, char **environ)
 {
@@ -12,14 +14,14 @@ int print_env(char *string, char **environ)
 
 	while (string[j] != '\n')
 	{
-		if(string[j] == env[h])
+		if (string[j] == env[h])
 			h++;
 		j++;
 	}
 
 	if (j == h)
 	{
-		for (unsigned int i = 0 ;environ[i] != NULL; i++)
+		for (unsigned int i = 0 ; environ[i] != NULL; i++)
 		{
 			printf("%s\n", environ[i]);
 		}

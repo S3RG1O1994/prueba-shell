@@ -9,12 +9,8 @@
  */
 char **add_arr(char *str, char *command)
 {
-	int count = 0;
-	int space = 0;
-	int count_2 = 0;
-	int words = 4;
-	char *copy = NULL;
-	char **arr = NULL;
+	int count = 0, space = 0, count_2 = 0, words = 4;
+	char *copy = NULL, **arr = NULL;
 
 	while (str[count])
 	{
@@ -44,7 +40,7 @@ char **add_arr(char *str, char *command)
 	arr[0] = command;
 	count = 1;
 	copy = strtok(copy, "\n ");
-		while (count < words)
+	while (count < words)
 	{
 		arr[count] = copy;
 		copy = strtok(NULL, " ");
