@@ -54,7 +54,7 @@ the shell. The result is same in both cases.
 
 ## Files
 
-`add_arr.c
+add_arr.c
 
 check_exit.c
 
@@ -80,11 +80,11 @@ simple_arr.c
 
 stat.c
 
-_strdup.c`
+_strdup.c
 
 ## Functions
 
-`int _putchar(char c);
+int _putchar(char c);
 
 char *_strdup(char *str);
 
@@ -107,7 +107,6 @@ char **create_arr(char *str_g, char **env);
 char **simple_arr(char *command, int words);
 
 int print_env(char *string, char **environ);
-`
 
 ## Libraries
 
