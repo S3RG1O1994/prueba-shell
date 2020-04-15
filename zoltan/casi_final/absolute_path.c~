@@ -1,0 +1,41 @@
+#include "shell.h"
+
+/**
+ * absolute_path - Create an array with absolute path.
+ * @args: Contains the arguments.
+ *
+ * Return: Allways array to execve.
+ */
+char **absolute_path(char *args)
+{
+	char **arr = NULL, *ar_d = _strdup(args), *command = NULL;
+	int count = 0, count_2 = 0, rreturn_stat;
+
+	while (ar_d[count] != ' ' && ar_d[count] != '\n')
+		count++;
+	command = malloc(sizeof(char) * count + 1);
+	if (!command)
+		return (NULL);
+
+	while (count_2 < count)
+	{
+		command[count_2] = ar_d[count_2];
+		count_2++;
+	}
+	command[count_2] = '\0';
+
+	count = 0;
+	free(ar_d);
+	rreturn_stat = stat_func(command);
+	if (rreturn_stat == 0)
+	{
+		arr = add_arr(args, command);
+		if (!arr)
+		{
+			free(ar_d);
+			return (NULL);
+		}
+		return (arr);
+	}
+	return (arr);
+}
