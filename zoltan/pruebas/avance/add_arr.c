@@ -9,8 +9,12 @@
  */
 char **add_arr(char *str, char *command)
 {
-	int count = 0, count_2 = 0, words = 4, space = 0;
-	char *copy = NULL, **arr = NULL;
+	int count = 0;
+	int space = 0;
+	int count_2 = 0;
+	int words = 4;
+	char *copy = NULL;
+	char **arr = NULL;
 
 	while (str[count])
 	{
@@ -23,6 +27,7 @@ char **add_arr(char *str, char *command)
 		arr = simple_arr(command, (words - 1));
 		return (arr);
 	}
+
 	count = 0;
 	while (str[count_2] != ' ' && str[count_2] != '\n')
 		count_2++;
@@ -33,14 +38,13 @@ char **add_arr(char *str, char *command)
 			words++;
 		count++;
 	}
-	copy[count - 1] = '\0';
 	arr = malloc(sizeof(char *) * words);
 	if (!arr)
 		return (NULL);
 	arr[0] = command;
 	count = 1;
-	copy = strtok(copy, " ");
-	while (count < words)
+	copy = strtok(copy, "\n ");
+		while (count < words)
 	{
 		arr[count] = copy;
 		copy = strtok(NULL, " ");
