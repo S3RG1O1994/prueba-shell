@@ -1,0 +1,56 @@
+.TH man 1 "15 April 2020" "1.0" "Simple Shell man page"
+.SH NAME
+.B Simple Shell
+- Interface for execute commands.
+.SH SYNOPSIS
+.B hsh
+[path] [command_string -flags]
+.SH DESCRIPTION
+.B Simple Shell hsh
+Receives a command and execute it showing the output in screen.
+.SH COMMANDS
+The following commands can be performed by the Simple Shell hsh with their respectives flags:
+
+-ls
+
+-pwd
+
+For more information about the commands and their options 
+.I (flags)
+please type man and the name of the command.
+.SH EXECUTION METHODS
+.B Interactive Mode
+
+Run the shell and type the commands to perform:
+
+-$ ./hsh
+
+-$ ls
+
+-$ file1 file2 file3 folder1
+
+-$ exit
+
+.B Non-Interactive Mode
+
+Pass the commands to perform and run the shell:
+
+-$ echo "/bin/ls" | ./hsh
+
+-$ hsh main.c shell.c test_ls_2
+
+-$ exit
+
+Or
+
+-$ cat test_ls_2
+
+-$ /bin/ls
+
+-$ cat test_ls_2 | ./hsh
+
+-$ hsh main.c shell.c test_ls_2
+.SH Bugs
+No known bugs.
+.SH AUTHORS
+Zoltan Mora, Sergio Diaz, Brian Steven Mosquera Gamboa
