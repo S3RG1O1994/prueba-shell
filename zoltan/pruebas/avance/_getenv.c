@@ -11,7 +11,6 @@ char *_getenv(char *words, char **environ)
 	char *other;
 	unsigned int cnt1, cnt2, cnt3, cnt4 = 0;
 
-	/*Verificar si el words existe*/
 	if (words == NULL)
 		return (0);
 
@@ -29,7 +28,6 @@ char *_getenv(char *words, char **environ)
 		{
 			for (; cnt4 < 5; cnt4++)
 				other++;
-			/*printf("%c\n",other[cnt4]);*/
 			return (other);
 		}
 		else

@@ -12,15 +12,19 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 	while (1)
 	{
 		counter++;
-		printf("$ ");
+		write(STDOUT_FILENO,"$ ", 2);
 		bytes_read = getline(&args, &size, stdin);
 		if (bytes_read == -1)
 		{
 			free(args);
+			_putchar('\n');
 			return (0);
 		}
 		if (*args == '\n' || *args == '\t' || *args == '.')
+		{
+			free(args);
 			continue;
+		}
 		else
 		{
 			arr = create_arr(args, env);
@@ -31,8 +35,8 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 			{
 				if (!arr)
 				{
-					printf("arr es NULL\n");
-					continue;
+					free(args);
+					return (0);
 				}
 				else
 				{
@@ -43,7 +47,10 @@ int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char
 			else
 				perror("Error: pid < 0");
 		}
-		free_all(arr);
+		if (arr)
+		{
+			free_all(arr);
+		}
 	}
 	free(args);
 	return (0);

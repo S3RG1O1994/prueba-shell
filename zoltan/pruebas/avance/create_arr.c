@@ -10,6 +10,11 @@ char **create_arr(char *args, char **env)
 	int return_stat;
 	int count = 0;
 
+	count = _merge(args, env);
+	if (count == 0)
+		return (NULL);
+
+	count = 0;
 	copy_path = _strdup(real_path);
 	path = copy_path;
 	path = strtok(path, ":");
