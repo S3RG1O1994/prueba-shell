@@ -10,13 +10,20 @@ void first_func(void)
 	char *string = NULL, **arr = NULL;
 	pid_t pid;
 	char env[] = "env";
-	
+	char s_exit[5] = "exit"; 
+
+	/*char *comprobate = _getenv("PATH");
+	FILE *fp = fopen("comprobate", "r");
+	*/
+
 	_putchar('$');
 	_putchar(' ');
 	string = malloc(sizeof(char) * size);
 	if (string == NULL)
 		return;
+
 	bytes_read = getline(&string, &size, stdin);
+
 	if (bytes_read == -1)
 	{
 		printf("error bytes_read == -1\n");
@@ -33,6 +40,11 @@ void first_func(void)
 		print_env(string, env);
 		free(string);
 		return;
+	}
+	if (check_exit(string, s_exit) == 0)
+	{
+		free(string);
+		exit(0);
 	}
 	arr = create_arr(string);
 	if (!arr)

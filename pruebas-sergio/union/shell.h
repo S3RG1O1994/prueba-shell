@@ -15,11 +15,7 @@ void first_func(void);
 char *concatenate(char *str_g, char *path);
 int stat_func(char *command);
 char **create_arr(char *str_g);
-void free_all(char **arr);
 char *_getenv(char *words);
-char **simple_arr(char *command, int words);
-char *_strdup(char *str);
 void print_env(char *string, char env[]);
-int check_exit(char *string, char exit[]);
 
 #endif

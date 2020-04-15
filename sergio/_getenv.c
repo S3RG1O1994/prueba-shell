@@ -22,7 +22,7 @@ char *_getenv(char *words)
     for (cnt2 = 0; environ[cnt2]; cnt2++)
     {
         other = environ[cnt2];
-        for (cnt3 = 0; other[cnt3 + 1] == words[cnt3]; cnt3++)
+        for (cnt3 = 0; other[cnt3] == words[cnt3]; cnt3++)
         {}
         if (cnt3 == cnt1)
         {
@@ -38,8 +38,11 @@ char *_getenv(char *words)
     return ("NO ENCONTRO NI MIERDA");
 }
 
-/*int main(void)
+int main(void)
 {
-    char *p = _getenv("env");
-    printf("%p", p);
-}*/
+    char *p = _getenv("PATH");
+    printf("%S", p);
+}
+
+
+/use/sbin/ls -> ls
