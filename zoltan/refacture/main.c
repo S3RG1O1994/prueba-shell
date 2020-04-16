@@ -5,41 +5,11 @@ void signalhandler(__attribute__((unused)) int n)
 	write(STDOUT_FILENO, "\n$ ", 3);
 }
 
-char *shortener(char *string)
-{
-	int count, count_2 = 0, count_aux, size = 0;
-	char *dup = NULL;
-
-	for (count = 0; string[count] != '\n' && (string[count] == '\t' ||
-						  string[count] == ' ');
-	     count++)
-	{
-	}
-	count_aux = count;
-	while (string[count_aux])
-	{
-		size++;
-		count_aux++;
-	}
-	dup = malloc(sizeof(char) * size + 1);
-	while (string[count])
-	{
-		dup[count_2] = string[count];
-		count_2++;
-		count++;
-	}
-	dup[count_2] = '\0';
-	if (!dup)
-		return (NULL);
-
-	return (dup);
-}
-
 int main(__attribute__((unused)) int ac, char **av)
 {
 	ssize_t bytes_read = 0;
 	size_t size = 0;
-	char *args = NULL, **arr = NULL;
+	char *args = NULL, **arr = NULL, *tmp = NULL;
 	pid_t pid;
 	int count, r_isatty = 0;
 
@@ -67,8 +37,10 @@ int main(__attribute__((unused)) int ac, char **av)
 			free(args);
 			return(0);
 		}
-		arr[0] = shortener(args);
+		tmp = shortener(args);
+		arr[0] = space_eliminator(tmp);
 		arr[1] = NULL;
+		free(tmp);
 		pid = fork();
 		if (pid > 0)
 			wait(&pid);
