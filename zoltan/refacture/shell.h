@@ -32,7 +32,6 @@ char **simple_arr(char *command, int words);
 int print_env(char *string, char **environ);
 void print_error(char *av, int counter, char *command);
 char **absolute_path(char *args, char *av, int counter);
-char **create_arr(char *arguments, char **env, char *av, int counter);
-
+char **create_arr(char *arguments);
 
 #endif

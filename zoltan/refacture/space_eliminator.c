@@ -1,11 +1,18 @@
 #include "shell.h"
 
+/**
+ * space_eliminator - function
+ * @string: arguments
+ *
+ * Return: argument
+ */
 char *space_eliminator(char *string)
 {
 	int count, count2;
 	char *dup;
 
-	for (count = 1; string[count] != ' ' && string[count] != '\t' && string[count] != '\0'; count++)
+	for (count = 1; string[count] != ' ' && string[count] != '\t' &&
+		     string[count] != '\0'; count++)
 	{
 	}
 	dup = malloc(sizeof(char) * count + 1);

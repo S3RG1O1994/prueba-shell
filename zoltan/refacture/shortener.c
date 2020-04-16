@@ -1,5 +1,11 @@
 #include "shell.h"
 
+/**
+ * shortener - function
+ * @string: arguments
+ *
+ * Return: arguments
+ */
 char *shortener(char *string)
 {
 	int count, count_2 = 0, count_aux, size = 0;
