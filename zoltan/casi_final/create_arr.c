@@ -20,7 +20,7 @@ char **create_arr(char *args, char **env, char *av, int counter)
 		return (NULL);
 	if (args[0] == '/')
 	{
-		arr = absolute_path(args);
+		arr = absolute_path(args, av, counter);
 		if (!arr)
 			return (free(copy_path), NULL);
 		while (arr[count_2])
