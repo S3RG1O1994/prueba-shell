@@ -47,6 +47,6 @@ char **create_arr(char *arguments, char **env, char *av, int counter)
 		path = strtok(NULL, ":");
 		free(vector);
 	}
-	print_error(av, counter, arguments)
+	print_error(av, counter, arguments);
 	return (free(args), free(copy_path), NULL);
 }
