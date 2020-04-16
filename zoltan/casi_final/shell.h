@@ -16,8 +16,12 @@ int stat_func(char *command);
 int check_exit(char *string);
 void simple_print(char *str);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 char **absolute_path(char *args);
+=======
+char **absolute_path(char *args, char *av, int counter);
+>>>>>>> 9c34c30ff5fb4952758c85e87fb9b0730f056ecc
 void print_number(long int number);
 >>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 int _merge(char *args, char **env);
