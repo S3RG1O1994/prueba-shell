@@ -4,6 +4,37 @@ void signalhandler(__attribute__((unused)) int n)
 {
 	write(STDOUT_FILENO, "\n$ ", 3);
 }
+
+char *shortener(char *string)
+{
+	int count, count_2 = 0, count_aux, size = 0;
+	char *dup = NULL;
+
+	for (count = 0; string[count] != '\n' && (string[count] == '\t' ||
+						  string[count] == ' ');
+	     count++)
+	{
+	}
+	count_aux = count;
+	while (string[count_aux])
+	{
+		size++;
+		count_aux++;
+	}
+	dup = malloc(sizeof(char) * size + 1);
+	while (string[count])
+	{
+		dup[count_2] = string[count];
+		count_2++;
+		count++;
+	}
+	dup[count_2] = '\0';
+	if (!dup)
+		return (NULL);
+
+	return (dup);
+}
+
 int main(__attribute__((unused)) int ac, char **av)
 {
 	ssize_t bytes_read = 0;
@@ -31,7 +62,12 @@ int main(__attribute__((unused)) int ac, char **av)
 			count++;
 		args[count] = '\0';
 		arr = malloc(sizeof(char *) * 2);
-		arr[0] = args;
+		if (!arr)
+		{
+			free(args);
+			return(0);
+		}
+		arr[0] = shortener(args);
 		arr[1] = NULL;
 		pid = fork();
 		if (pid > 0)
@@ -40,10 +76,14 @@ int main(__attribute__((unused)) int ac, char **av)
 		{
 				if (execve(arr[0], arr, NULL) == -1)
 					perror(av[0]);
-			return (free(args), free(arr), 0);
+				free(args);
+				free(arr[0]);
+				free(arr);
+				return (0);
 		}
 		else
 			perror("Error");
+		free(arr[0]);
 		free(arr);
 	}
 	return (0);
