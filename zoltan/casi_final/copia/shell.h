@@ -15,7 +15,7 @@ void free_all(char **arr);
 int stat_func(char *command);
 int check_exit(char *string);
 void simple_print(char *str);
-char **absolute_path(char *args);
+char **absolute_path(char *args, char *av, int counter);
 void print_number(long int number);
 int _merge(char *args, char **env);
 char **add_arr(char *str, char *command);

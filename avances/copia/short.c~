@@ -1,0 +1,6 @@
+#include "shell.h"
+
+void short_func(int *counter)
+{
+	counter += 1;
+}

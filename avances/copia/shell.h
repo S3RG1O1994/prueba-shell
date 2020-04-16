@@ -26,15 +26,9 @@ char **add_arr(char *str, char *command);
 char *concatenate(char *args, char *path);
 char *_getenv(char *words, char **environ);
 char **simple_arr(char *command, int words);
-<<<<<<< HEAD
-char *_strdup(char *str);
-void print_env(char *string, char env[]);
-int check_exit(char *string, char exit[]);
-=======
 int print_env(char *string, char **environ);
 void print_error(char *av, int counter, char *command);
 char **absolute_path(char *args, char *av, int counter);
-char **create_arr(char *arguments, char **env, char *av, int counter);
->>>>>>> 6120109af5b8f6248408dc37a2d6c5bcc67d9dd2
+char **create_arr(char *str_g, char **env, char *av, int counter);
 
 #endif

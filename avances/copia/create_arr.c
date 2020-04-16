@@ -9,24 +9,27 @@
  *
  * Return: Allways matrix or NULL.
  */
-char **create_arr(char *args, char **env, char *av, int counter)
+char **create_arr(char *arguments, char **env, char *av, int counter)
 {
 	char *real_path = _getenv("PATH", env), *copy_path = NULL;
-	char *path = NULL, *vector = NULL, **arr = NULL;
+	char *path = NULL, *vector = NULL, **arr = NULL, *args = NULL;
 	int rreturn_stat, count = 0, count_2 = 0, validator;
 
 	validator = _merge(args, env);
+	args = shortener(arguments);
+	//free(args);
+	//args = tmp;
 	if (validator == 0)
 		return (NULL);
 	if (args[0] == '/')
 	{
 		arr = absolute_path(args, av, counter);
 		if (!arr)
-			return (free(copy_path), NULL);
+			return (free(args), free(copy_path), NULL);
 		while (arr[count_2])
-				count_2++;
+			count_2++;
 		arr[count_2 + 1] = copy_path;
-		return (arr);
+		return (free(args), arr);
 	}
 	copy_path = _strdup(real_path);
 	path = copy_path;
@@ -41,10 +44,10 @@ char **create_arr(char *args, char **env, char *av, int counter)
 			while (arr[count])
 				count++;
 			arr[count + 1] = copy_path;
-			return (arr);
+			return (free(args), arr);
 		}
 		path = strtok(NULL, ":");
 		free(vector);
 	}
-	return (print_error(av, counter, args), free(copy_path), NULL);
+	return (free(args), print_error(av, counter, args), free(copy_path), NULL);
 }
