@@ -24,11 +24,7 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 		bytes_read = getline(&args, &size, stdin);
 		if (bytes_read == -1)
 			return (free(args), _putchar('\n'), 0);
-<<<<<<< HEAD
-		if (*args == '\n' || *args == '\t' || *args == '.')
-=======
 		if (*args == '\n' || *args == '\t')
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 			continue;
 		else
 		{
@@ -41,14 +37,6 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 				if (arr)
 				{
 					if (execve(arr[0], arr, NULL) == -1)
-<<<<<<< HEAD
-						perror("Error:");
-				}
-				return (free(args), 0);
-			}
-			else
-				perror("Error:");
-=======
 						perror("Error execve:");
 				}
 				return (free(args), 0);
@@ -57,7 +45,6 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 
 			else
 				perror("Error");
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 		}
 		if (arr)
 			free_all(arr);

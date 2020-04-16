@@ -11,21 +11,6 @@
  */
 char **create_arr(char *args, char **env, char *av, int counter)
 {
-<<<<<<< HEAD
-	char *real_path = _getenv("PATH", env);
-	char *copy_path = NULL;
-	char *path = NULL;
-	char *vector = NULL;
-	char **arr = NULL;
-	int rreturn_stat;
-	int count = 0;
-
-	count = _merge(args, env);
-	if (count == 0)
-		return (NULL);
-
-	count = 0;
-=======
 	char *real_path = _getenv("PATH", env), *copy_path = NULL;
 	char *path = NULL, *vector = NULL, **arr = NULL;
 	int rreturn_stat, count = 0, count_2 = 0, validator;
@@ -41,9 +26,15 @@ char **create_arr(char *args, char **env, char *av, int counter)
 		while (arr[count_2])
 				count_2++;
 		arr[count_2 + 1] = copy_path;
+		count = 0;
+		while (arr[count])
+		{
+			printf("%s\n", arr[count]);
+			count++;
+		}
+
 		return (arr);
 	}
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 	copy_path = _strdup(real_path);
 	path = copy_path;
 	path = strtok(path, ":");
@@ -62,11 +53,5 @@ char **create_arr(char *args, char **env, char *av, int counter)
 		path = strtok(NULL, ":");
 		free(vector);
 	}
-<<<<<<< HEAD
-	print_error(av, counter, args);
-	free(copy_path);
-	return (NULL);
-=======
 	return (print_error(av, counter, args), free(copy_path), NULL);
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 }

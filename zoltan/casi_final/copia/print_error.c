@@ -10,11 +10,7 @@ void print_error(char *av, int counter, char *command)
 {
 	simple_print(av);
 	write(STDOUT_FILENO, ": ", 2);
-<<<<<<< HEAD
-	_putchar(counter + '0');
-=======
 	print_number(counter);
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 	write(STDOUT_FILENO, ": ", 2);
 	simple_print(command);
 	write(STDOUT_FILENO, ": ", 2);
@@ -36,8 +32,6 @@ void simple_print(char *str)
 		count++;
 	}
 }
-<<<<<<< HEAD
-=======
 
 /**
  * print_number - Print a number.
@@ -55,4 +49,3 @@ void print_number(long int number)
 	number %= 10;
 	_putchar(number + '0');
 }
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b

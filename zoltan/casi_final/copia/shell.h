@@ -15,23 +15,15 @@ void free_all(char **arr);
 int stat_func(char *command);
 int check_exit(char *string);
 void simple_print(char *str);
-<<<<<<< HEAD
-=======
 char **absolute_path(char *args);
 void print_number(long int number);
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 int _merge(char *args, char **env);
 char **add_arr(char *str, char *command);
 char *concatenate(char *args, char *path);
 char *_getenv(char *words, char **environ);
 char **simple_arr(char *command, int words);
 int print_env(char *string, char **environ);
-<<<<<<< HEAD
-char **create_arr(char *str_g, char **env, char *av, int counter);
-void print_error(char *av, int counter, char *command);
-=======
 void print_error(char *av, int counter, char *command);
 char **create_arr(char *str_g, char **env, char *av, int counter);
 
->>>>>>> 9e43e8cac13aff0c4cefb30972cc0593de6bb05b
 #endif
