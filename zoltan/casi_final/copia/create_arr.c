@@ -20,19 +20,12 @@ char **create_arr(char *args, char **env, char *av, int counter)
 		return (NULL);
 	if (args[0] == '/')
 	{
-		arr = absolute_path(args);
+		arr = absolute_path(args, av, counter);
 		if (!arr)
 			return (free(copy_path), NULL);
 		while (arr[count_2])
 				count_2++;
 		arr[count_2 + 1] = copy_path;
-		count = 0;
-		while (arr[count])
-		{
-			printf("%s\n", arr[count]);
-			count++;
-		}
-
 		return (arr);
 	}
 	copy_path = _strdup(real_path);

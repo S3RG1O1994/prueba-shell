@@ -14,13 +14,12 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 	size_t size = 0;
 	char *args = NULL, **arr = NULL;
 	pid_t pid;
-	int counter = 0;
+	int counter = 0, val;
 
 	signal(SIGINT, SIG_IGN);
 	while (1)
 	{
-		counter++;
-		write(STDOUT_FILENO, "$ ", 2);
+		short_func(&counter);
 		bytes_read = getline(&args, &size, stdin);
 		if (bytes_read == -1)
 			return (free(args), _putchar('\n'), 0);
@@ -28,6 +27,9 @@ int main(__attribute__((unused)) int ac, char **av, char **env)
 			continue;
 		else
 		{
+			val = validator(args);
+			if (val != 0)
+				continue;
 			arr = create_arr(args, env, av[0], counter);
 			pid = fork();
 			if (pid > 0)

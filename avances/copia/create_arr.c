@@ -2,7 +2,7 @@
 
 /**
  * create_arr - Create an array with executable path and possible arguments.
- * @arguments: Contains the commands.
+ * @args: Contains the commands.
  * @env: Contains the environment.
  * @av: contains the first argument.
  * @counter: General counter.
@@ -15,10 +15,12 @@ char **create_arr(char *arguments, char **env, char *av, int counter)
 	char *path = NULL, *vector = NULL, **arr = NULL, *args = NULL;
 	int rreturn_stat, count = 0, count_2 = 0, validator;
 
-	args = shortener(arguments);
 	validator = _merge(args, env);
+	args = shortener(arguments);
+	//free(args);
+	//args = tmp;
 	if (validator == 0)
-		return (free(args), NULL);
+		return (NULL);
 	if (args[0] == '/')
 	{
 		arr = absolute_path(args, av, counter);
@@ -47,6 +49,5 @@ char **create_arr(char *arguments, char **env, char *av, int counter)
 		path = strtok(NULL, ":");
 		free(vector);
 	}
-	print_error(av, counter, arguments)
-	return (free(args), free(copy_path), NULL);
+	return (free(args), print_error(av, counter, args), free(copy_path), NULL);
 }
