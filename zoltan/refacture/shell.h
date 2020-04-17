@@ -11,6 +11,8 @@
 
 extern char **environ;
 
+char *preparer(char *args);
+int process(char **arr, char *av, char *args);
 char *space_eliminator(char *string);
 int _putchar(char c);
 char *_strdup(char *str);
@@ -32,6 +34,6 @@ char **simple_arr(char *command, int words);
 int print_env(char *string, char **environ);
 void print_error(char *av, int counter, char *command);
 char **absolute_path(char *args, char *av, int counter);
-char **create_arr(char *arguments);
+char **create_arr(char *arguments, char *av, int counter);
 
 #endif

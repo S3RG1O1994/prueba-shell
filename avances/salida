@@ -1,0 +1,22 @@
+$ _getenv.c
+_putchar.c
+_strdup.c
+absolute_path.c
+add_arr.c
+check_exit.c
+concatenate.c
+copia
+create_arr.c
+env.c
+free_all.c
+hsh
+main.c
+merge.c
+print_error.c
+salida
+shell.h
+short.c
+simple_arr.c
+stat.c
+validator.c
+$ 

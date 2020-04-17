@@ -20,15 +20,15 @@ int main(__attribute__((unused)) int ac, char **av)
 {
 	ssize_t bytes_read = 0;
 	size_t size = 0;
-	char *args = NULL, **arr = NULL;
-	pid_t pid;
-	int r_isatty = 0;
+	char *args = NULL, **arr = NULL, *arguments = NULL;
+	int r_isatty = 0, val = 0, counter = 0;
 
 	if (!(isatty(STDIN_FILENO)))
 		r_isatty = 1;
 	signal(SIGINT, signalhandler);
 	while (1)
 	{
+		counter++;
 		if (r_isatty == 0)
 			write(STDOUT_FILENO, "$ ", 2);
 		bytes_read = getline(&args, &size, stdin);
@@ -38,23 +38,19 @@ int main(__attribute__((unused)) int ac, char **av)
 				_putchar('\n');
 			return (free(args), 0);
 		}
-		arr = create_arr(args);
-		pid = fork();
-		if (pid > 0)
-			wait(&pid);
-		else if (pid == 0)
+		val = validator(args);
+		if (val != 0)
+			continue;
+	        arguments = preparer(args);
+		arr = create_arr(arguments, av[0], counter);
+		if (arr)
 		{
-			if (execve(arr[0], arr, NULL) == -1)
-				perror(av[0]);
-			free(args);
-			free(arr[0]);
-			free(arr);
-			return (0);
+			process(arr, av[0], args);
+			free_all(arr);
+			free(arguments);
 		}
 		else
-			perror("Error");
-		free(arr[0]);
-		free(arr);
+			free(arguments);
 	}
 	return (0);
 }

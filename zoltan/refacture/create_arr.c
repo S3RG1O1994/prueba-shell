@@ -6,25 +6,42 @@
  *
  * Return: matrix
  */
-char **create_arr(char *arguments)
+char **create_arr(char *arguments, char *av, int counter)
 {
-	char *args = NULL, *tmp = NULL, **arr = NULL;
-	int count = 0;
+	char /* *args = NULL, *tmp = NULL,*/ **arr = NULL;
+	char *real_path = _getenv("PATH", environ), *copy_path = NULL;
+	char *path = NULL, *vector = NULL;
+	int rreturn_stat = 0, count = 0, count_2 = 0;
 
-	args = _strdup(arguments);
-	while (args[count] != '\n')
-		count++;
-	args[count] = '\0';
-	arr = malloc(sizeof(char *) * 2);
-	if (!arr)
+	copy_path = _strdup(real_path);
+	if (arguments[0] == '/')
 	{
-		free(args);
-		return (0);
+		arr = absolute_path(arguments, av, counter);
+		if (!arr)
+			return (free(arguments),  NULL);
+		while (arr[count_2])
+			count_2++;
+		arr[count_2 + 1] = copy_path;
+		return (arr);
 	}
-	tmp = shortener(args);
-	arr[0] = space_eliminator(tmp);
-	arr[1] = NULL;
-	free(tmp);
-	free(args);
-	return (arr);
+	path = copy_path;
+	path = strtok(path, ":");
+
+	while (path)
+	{
+		vector = concatenate(arguments, path);
+		rreturn_stat = stat_func(vector);
+		if (rreturn_stat == 0)
+		{
+			arr = add_arr(arguments, vector);
+			while (arr[count])
+				count++;
+			arr[count + 1] = copy_path;
+			return (arr);
+		}
+		path = strtok(NULL, ":");
+		free(vector);
+	}
+	print_error(av, counter, arguments);
+	return (free(copy_path), NULL);
 }
