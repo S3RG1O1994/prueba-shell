@@ -41,8 +41,8 @@ int main(__attribute__((unused)) int ac, char **av)
 		val = validator(args);
 		if (val != 0)
 			continue;
-	        arguments = preparer(args);
-		arr = create_arr(arguments, av[0], counter, args);
+		arguments = preparer(args);
+		arr = create_arr(arguments, av[0], counter);
 		if (arr)
 		{
 			process(arr, av[0], args);

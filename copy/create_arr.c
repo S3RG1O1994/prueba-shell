@@ -3,22 +3,18 @@
 /**
  * create_arr - function
  * @arguments: arguments
- * @av: the char pointer
- * @counter: the in counter
+ * @av: the pointer char
+ * @counter: the int
  *
  * Return: matrix
  */
-
-char **create_arr(char *arguments, char *av, int counter, char *args)
+char **create_arr(char *arguments, char *av, int counter)
 {
 	char **arr = NULL;
 	char *real_path = _getenv("PATH", environ), *copy_path = NULL;
 	char *path = NULL, *vector = NULL;
-	int rreturn_stat = 0, count = 0, count_2 = 0, validator;
+	int rreturn_stat = 0, count = 0, count_2 = 0;
 
-	validator = _merge(arguments, environ, args);
-	if (validator == 0)
-		return (/*free(arguments),*/ NULL);
 	copy_path = _strdup(real_path);
 	if (arguments[0] == '/')
 	{

@@ -1,10 +1,11 @@
 #include "shell.h"
 
 /**
- * create_arr - function
- * @arguments: arguments
- * @av: the char pointer
- * @counter: the in counter
+ * create_arr - concatenates and unifies the arguments in an array.
+ * @arguments: All arguments
+ * @av: Name of program.
+ * @counter: the in general counter
+ * @args: Contains de arguments
  *
  * Return: matrix
  */
